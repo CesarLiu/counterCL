@@ -1,0 +1,21 @@
+runs:
+# Domain Randomization
+  - name:  PPO_DR # run name
+    train_dataset_size: 1000
+    wandb: null
+    trained_on: null
+    curriculum_type: dr
+    train_seed: 42
+    label: null
+
+# PLR: Score-type=AMGAE, Beta=4.0, Rho=0.3 
+  - name: PPO_PLR_AMGAE
+    train_dataset_size: 1000
+    wandb: null
+    trained_on: null
+    curriculum_type: plr
+    train_seed: 42
+    score_type: amgae
+    beta: 4.0
+    rho: 0.3
+    label: null

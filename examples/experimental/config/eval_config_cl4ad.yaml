@@ -1,0 +1,55 @@
+res_path: examples/experimental/experiments_cl4ad # Store dataframes here
+figure_dir: figures/experiments_cl4ad
+figname_postfix: experiments_cl4ad
+first_ckpt: 200
+every_k_ckpts: 400
+number_of_ckpts: 10
+label_with_params: False
+eval_test_dataset: True
+eval_valid_dataset: True
+eval_train_dataset: True
+wandb_log_file: null # wandb log file consisting of epochs, steps, and runtimes. 
+wandb_run_path: null # wandb username/project/runs/ path to the run that generated the checkpoints
+batch_size: 524288
+test_dataset_size: 10000 # Number of test scenarios to evaluate on
+valid_dataset_size: 10000 # Number of validation scenarios to evaluate on
+train_dataset_size: 10000 # Number of training scenarios to evaluate on
+
+# Environment settings
+train_dir: data/processed/training
+test_dir: data/processed/testing
+valid_dir: data/processed/validation
+
+gamma: 0.99 # Discount factor for rewards
+lambd: 0.95 # PLR
+num_copies: 5
+num_worlds: 500 #1 # Number of parallel environments for evaluation
+max_controlled_agents: 64 # Maximum number of agents controlled by the model.
+ego_state: true
+road_map_obs: true
+partner_obs: true
+norm_obs: true
+remove_non_vehicles: true # If false, all agents are included (vehicles, pedestrians, cyclists)
+lidar_obs: false # NOTE: Setting this to true currently turns of the other observation types
+reward_type: "weighted_combination"
+collision_weight: -0.75
+off_road_weight: -0.75
+goal_achieved_weight: 1.0
+dynamics_model: "classic"
+collision_behavior: "ignore" # Options: "remove", "stop"
+dist_to_goal_threshold: 2.0
+polyline_reduction_threshold: 0.1 # Rate at which to sample points from the polyline (0 is use all closest points, 1 maximum sparsity), needs to be balanced with kMaxAgentMapObservationsCount
+sampling_seed: 42 # If given, the set of scenes to sample from will be deterministic, if None, the set of scenes will be random
+obs_radius: 50.0 # Visibility radius of the agents
+init_roadgraph: False
+render_3d: True
+deterministic: True # If True, the policy will be deterministic, otherwise it will be stochastic
+vbd_in_obs: false
+
+# Number of discretizations in the action space
+# Note: Make sure that this equals the discretizations that the policy
+# has been trained with
+action_space_steer_disc: 13  
+action_space_accel_disc: 7 
+
+device: "cuda" # Options: "cpu", "cuda"
