@@ -261,3 +261,5 @@ figures*/
 diagram*/
 data/processed/mini
 data/processed/complete
+data/*
+results/
